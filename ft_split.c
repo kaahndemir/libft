@@ -1,101 +1,103 @@
-/**
- * @file ft_split.c
- * @author Kaan Demir
- * @brief Implementation of ft_split
- * @version 0.1
- * @date 2025-07-01
- *
- * @details  Allocates memory (using malloc(3)) and returns an array of strings obtained by splitting 's' using the character 'c' as a delimiter. The array must end with a NULL pointer. 
- *
- * @param s The string to be split.
- * @param c The delimiter character.
- * @return The array of new strings resulting from the split. NULL if the allocation fails. 
- *
- * @note Part: Part 2: Additional Functions
- * @note Category: Hard (Complex Allocation and Logic)
- * @note Allowed functions: malloc,free
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudeir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:51:56 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 19:52:03 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-
-size_t ft_separatorskip(char const *s, size_t i, char c)
+size_t	ft_tothesep(char const *s, size_t i, char c)
 {
-    while(s[i] && s[i] == c)
-        i++;
+	size_t	lastindex;
 
-    return i;
+	lastindex = i;
+	while (s[i] != c && s[i])
+	{
+		lastindex = i;
+		i++;
+	}
+	return (lastindex);
 }
 
-size_t ft_tothesep(char const *s, size_t i, char c)
+size_t	ft_separatorskip(char const *s, size_t i, char c)
 {
-    size_t lastindex = i;
-
-    while(s[i] != c && s[i])
-    {
-        lastindex = i;
-        i++;
-    }
-
-    return lastindex;
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
 }
 
-size_t ft_countitems(char const *s, char c)
+size_t	ft_countitems(char const *s, char c)
 {
-    size_t count = 0;
-    size_t i = 0;
+	size_t	count;
+	size_t	i;
 
-    // "  dashdasdhagsdh *dasjjhasdhaksjdasd*das*a*sd*asd*asdasda**"
-
-    while(s[i])
-    {
-        i = ft_separatorskip(s,i, c);
-
-        if(s[i] != c)
-        {
-            count++;
-            while(s[i] != c)
-                i++;
-        }
-    }
-    return count;
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		i = ft_separatorskip(s, i, c);
+		if (s[i] != c)
+		{
+			count++;
+			while (s[i]  && s[i] != c)
+            {
+		write(1, &s[i], 1);
+				i++;
+            }
+		}
+	}
+	return (count);
 }
 
-void ft_freeeverything(char **a, size_t count)
+void	ft_freeeverything(char **a, size_t count)
 {
-    size_t i = 0;
+	size_t	i;
 
-    while(i < count)
-    {
-        free(a[i]);
-        i++;
-    }
+	i = 0;
+	while (i < count)
+	{
+		free(a[i]);
+		i++;
+	}
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-    char **a = (char **)malloc((ft_countitems(s, c) + 1) * sizeof(char *));
-    if(a == NULL)
-        return NULL;
+	char	**a;
+	size_t	i;
+	size_t	j;
+	size_t	wordend;
+	size_t	wordcount;
 
-    size_t i = 0;
-    size_t j = 0;
+	wordcount = ft_countitems(s, c);
 
-    while(s[i]){
-        i = ft_separatorskip(s,i, c);
-        size_t wordend = ft_tothesep(s, i, c);
-        a[j] = ft_substr(s, i,  wordend - i + 1);
-        if(a[j] == NULL)
-        {
-            ft_freeeverything(a, j);
-            return NULL;
-        }
+	if(wordcount == 0)
+		return NULL;
 
-        i = wordend + 1;
-        j++;
-    }
-
-    a[j] = NULL;
-
-    return a;
+	a = (char **)malloc((wordcount + 1) * sizeof(char *));
+	if (a == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		i = ft_separatorskip(s, i, c);
+		wordend = ft_tothesep(s, i, c);
+		a[j] = ft_substr(s, i, wordend - i + 1);
+		if (a[j] == NULL)
+		{
+			ft_freeeverything(a, j);
+			return (NULL);
+		}
+		i = wordend + 1;
+		j++;
+	}
+	a[j] = NULL;
+	return (a);
 }

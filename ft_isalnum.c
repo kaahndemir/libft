@@ -1,23 +1,18 @@
-/**
- * @file ft_isalnum.c
- * @author Kaan Demir
- * @brief Implementation of ft_isalnum
- * @note Recreates the behavior of isalnum()
- * @version 0.1
- * @date 2025-07-01
- *
- * @details checks for an alphanumeric character; it is equivalent to (isalpha(c) || isdigit(c)).
- *
- * @return The values returned are nonzero if the character c falls into the tested class, and zero if not.
- *
- * @note Part: Part 1: Libc Functions
- * @note Category: Easy Start (Character and Simple Memory Functions)
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:43:09 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 19:43:17 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <ctype.h>
 #include "libft.h"
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    return (isalpha(c) || isdigit(c));
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

@@ -1,27 +1,23 @@
-/**
- * @file ft_strlen.c
- * @author Kaan Demir
- * @brief Implementation of ft_strlen
- * @note Recreates the behavior of strlen()
- * @version 0.1
- * @date 2025-07-01
- *
- * @details The strlen() function calculates the length of the string pointed to by s, excluding the terminating null byte ('\0').
- *
- * @return The strlen() function returns the number of bytes in the string pointed to by s.
- *
- * @note Part: Part 1: Libc Functions
- * @note Category: Easy Start (Character and Simple Memory Functions)
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:42:41 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 19:42:56 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-    int i = 0;
+	int	i;
 
-    while (s[i])
-        i++;
-    
-    return i;
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

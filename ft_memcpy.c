@@ -1,33 +1,34 @@
-/**
- * @file ft_memcpy.c
- * @author Kaan Demir
- * @brief Implementation of ft_memcpy
- * @note Recreates the behavior of memcpy()
- * @version 0.1
- * @date 2025-07-01
- *
- * @details The memcpy() function copies n bytes from memory area src to memory area dest. The memory areas must not overlap. Use memmove(3) if the memory areas do overlap.
- *
- * @return The memcpy() function returns a pointer to dest.
- *
- * @note Part: Part 1: Libc Functions
- * @note Category: Medium Difficulty (Pointer-intensive Functions)
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:48:01 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/06 18:40:29 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    unsigned char *a = (unsigned char *)dst;
-    unsigned char *b = (unsigned char *)src;
+	unsigned char		*a;
+	const unsigned char	*b;
+	size_t				i;
 
-    unsigned int i = 0;
-
-    while (n > i)
-    {
-        a[i] = b[i];
-        i++; 
-    }
-
-    return dst;
+	if (!dst && !src)
+		return (dst);
+	if (dst == src)
+		return (dst);
+	a = (unsigned char *)dst;
+	b = (const unsigned char *)src;
+	i = 0;
+	while (n > i)
+	{
+		a[i] = b[i];
+		i++;
+	}
+	return (dst);
 }

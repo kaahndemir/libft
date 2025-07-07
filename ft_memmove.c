@@ -1,46 +1,51 @@
-/**
- * @file ft_memmove.c
- * @author Kaan Demir
- * @brief Implementation of ft_memmove
- * @note Recreates the behavior of memmove()
- * @version 0.1
- * @date 2025-07-01
- *
- * @details The memmove() function copies n bytes from memory area src to memory area dest. The memory areas may over‐ lap: copying takes place as though the bytes in src are first copied into a temporary array that does not overlap src or dest, and the bytes are then copied from the temporary array to dest.
- *
- * @return The memmove() function returns a pointer to dest.
- *
- * @note Part: Part 1: Libc Functions
- * @note Category: Medium Difficulty (Pointer-intensive Functions)
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:48:07 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/06 18:41:25 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_onlymemmove(char *a, char *b, size_t len)
 {
-    size_t i = 0;
-    size_t j = len - 1;
+	size_t	i;
+	size_t	j;
 
-    char *a = (char *)src;
-    char *b = (char *)dst;
+	j = len - 1;
+	i = 0;
+	if (b <= a)
+	{
+		while (i < len)
+		{
+			b[i] = a[i];
+			i++;
+		}
+	}
+	else
+	{
+		while ((int)j >= 0)
+		{
+			b[j] = a[j];
+			j--;
+		}
+	}
+	return (b);
+}
 
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	char	*a;
+	char	*b;
 
-    if (b <= a)
-    {
-        while (i < len)
-        {
-            b[i] = a[i];
-            i++; 
-        }
-    }
-    else
-    {   
-        while (j == 0)
-        {
-            b[j] = a[j];
-            j--;
-        }
-    }
-
-    return b;
+	if (!dst && !src)
+		return (dst);
+	a = (char *)src;
+	b = (char *)dst;
+	return (ft_onlymemmove(a, b, len));
 }

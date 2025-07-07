@@ -1,42 +1,31 @@
-/**
- * @file ft_strlcpy.c
- * @author Kaan Demir
- * @brief Copies a string into a size-bounded buffer.
- * @note Recreates the behavior of strlcpy().
- * @version 0.1
- * @date 2025-07-01
- *
- * @details The ft_strlcpy() function copies up to `dstsize - 1` characters
- * from the NUL-terminated string `src` to `dst`, NUL-terminating the result.
- *
- * @param dst The destination buffer.
- * @param src The source string.
- * @param dstsize The size of the destination buffer.
- *
- * @return The total length of the string it tried to create. That means the
- * length of `src`. If the return value is >= `dstsize`, the output string
- * has been truncated. It is the caller's responsibility to handle this.
- *
- * @note Part: Part 1: Libc Functions
- * @note Category: Medium Difficulty (Pointer-intensive Functions)
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:41:40 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 19:54:30 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-    size_t i = 0;
-    size_t srclenght = ft_strlen(src);
+	size_t	i;
+	size_t	srclenght;
 
-    if(dstsize == 0)
-        return srclenght;
-
-    while(src[i] && dstsize - 1 > i)
-    {
-        dst[i] = src[i];
-        i++;        
-    }
-    dst[i] = 0;
-    
-    return srclenght;
+	i = 0;
+	srclenght = ft_strlen(src);
+	if (dstsize == 0)
+		return (srclenght);
+	while (src[i] && dstsize - 1 > i)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (srclenght);
 }

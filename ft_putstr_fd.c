@@ -1,24 +1,21 @@
-/**
- * @file ft_putstr_fd.c
- * @author Kaan Demir
- * @brief Implementation of ft_putstr_fd
- * @version 0.1
- * @date 2025-07-01
- *
- * @details  Outputs the string 's' to the specified file descriptor. 
- *
- * @param s: The string to output. fd: The file descriptor on which to write. 
- * @return None 
- *
- * @note Part: Part 2: Additional Functions
- * @note Category: Easy (File Descriptor I/O)
- * @note Allowed functions: write
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:51:41 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 19:51:44 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    int strlen = ft_strlen(s);
-    write(fd,&*s, strlen);
+	int	strlen;
+
+	strlen = ft_strlen(s);
+	write(fd, &*s, strlen);
 }

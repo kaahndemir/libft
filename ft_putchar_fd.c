@@ -1,23 +1,18 @@
-/**
- * @file ft_putchar_fd.c
- * @author Kaan Demir
- * @brief Implementation of ft_putchar_fd
- * @version 0.1
- * @date 2025-07-01
- *
- * @details  Outputs the character 'c' to the specified file descriptor. 
- *
- * @param c: The character to output. fd: The file descriptor on which to write. 
- * @return None 
- *
- * @note Part: Part 2: Additional Functions
- * @note Category: Easy (File Descriptor I/O)
- * @note Allowed functions: write
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 19:51:10 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 19:51:14 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-    write(fd,&c, sizeof(c));
+	write(fd, &c, sizeof(c));
 }

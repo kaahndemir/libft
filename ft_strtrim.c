@@ -1,84 +1,75 @@
-/**
- * @file ft_strtrim.c
- * @author Kaan Demir
- * @brief Implementation of ft_strtrim
- * @version 0.1
- * @date 2025-07-01
- *
- * @details  Allocates memory (using malloc(3)) and returns a copy of 's1' with characters from 'set' removed from the beginning and the end. 
- *
- * @param s1: The string to be trimmed. set: The string containing the set of characters to be removed. 
- * @return The trimmed string. NULL if the allocation fails. 
- *
- * @note Part: Part 2: Additional Functions
- * @note Category: Medium (More Complex Logic)
- * @note Allowed functions: malloc
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/05 20:00:28 by ogudemir          #+#    #+#             */
+/*   Updated: 2025/07/05 20:03:14 by ogudemir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-static int ft_isinset(char a, char const *set)
+static int	ft_isinset(char a, char const *set)
 {
-    int inset = 0;
-    int i = 0;
+	int	inset;
+	int	i;
 
-    // iterate set
-    while(set[i])
-    {
-        if(a == set[i])
-            inset = 1;
-        i++;
-    }
-
-    return inset;
+	inset = 0;
+	i = 0;
+	while (set[i])
+	{
+		if (a == set[i])
+			inset = 1;
+		i++;
+	}
+	return (inset);
 }
 
-static int ft_getstart(char const *s1, char const *set)
+static int	ft_getstart(char const *s1, char const *set)
 {
+	int	i;
 
-    int i = 0;
-
-    // iterate string and get the farest right
-    while(s1[i])
-    {
-        if(!ft_isinset(s1[i], set))
-            return i;
-        i++;
-    }
-
-    return i;
+	i = 0;
+	while (s1[i])
+	{
+		if (!ft_isinset(s1[i], set))
+			return (i);
+		i++;
+	}
+	return (i);
 }
 
-static int ft_getend(char const *s1, char const *set)
+static int	ft_getend(char const *s1, char const *set)
 {
+	int	i;
 
-    int i = ft_strlen(s1) - 1;
-
-    // iterate string and get the farest left
-    while(i >= 0 && s1[i])
-    {
-        if(!ft_isinset(s1[i], set))
-            return i;
-        i--;
-    }
-
-    return i;
+	i = ft_strlen(s1) - 1;
+	while (i >= 0 && s1[i])
+	{
+		if (!ft_isinset(s1[i], set))
+			return (i);
+		i--;
+	}
+	return (i);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-    int start = ft_getstart(s1, set);
-    int end = ft_getend(s1, set);
+	int		start;
+	int		end;
+	int		len;
+	char	*a;
 
-    if(start > end)
-        return ft_strdup("");
-
-    int len = end - start + 1;
-
-    char *a = ft_substr(s1, start, len);
-    if(a == NULL)
-        return NULL;
-
-    return a;
+	start = ft_getstart(s1, set);
+	end = ft_getend(s1, set);
+	if (start > end)
+		return (ft_strdup(""));
+	len = end - start + 1;
+	a = ft_substr(s1, start, len);
+	if (a == NULL)
+		return (NULL);
+	return (a);
 }
-
