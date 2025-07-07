@@ -6,7 +6,7 @@
 /*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:03:21 by ogudemir          #+#    #+#             */
-/*   Updated: 2025/07/06 21:57:44 by ogudemir         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:39:33 by ogudemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@ char	*ft_createsubstr(char const *s, size_t finallen, size_t start)
 	return (new);
 }
 
-// "libft" 4 1
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	slen;
 
 	if (s == NULL)
 		return (NULL);
-	slen = (size_t)ft_strlen(s); // 5
+	slen = (size_t)ft_strlen(s);
 	if (start >= slen)
 	{
-		return ft_strdup("");
+		return (ft_strdup(""));
 	}
 	if (len > slen - start)
 		len = slen - start;

@@ -12,19 +12,6 @@
 
 #include "libft.h"
 
-size_t	ft_tothesep(char const *s, size_t i, char c)
-{
-	size_t	lastindex;
-
-	lastindex = i;
-	while (s[i] != c && s[i])
-	{
-		lastindex = i;
-		i++;
-	}
-	return (lastindex);
-}
-
 size_t	ft_separatorskip(char const *s, size_t i, char c)
 {
 	while (s[i] && s[i] == c)
@@ -42,13 +29,13 @@ size_t	ft_countitems(char const *s, char c)
 	while (s[i])
 	{
 		i = ft_separatorskip(s, i, c);
-		if (s[i] != c)
+		if (s[i])
 		{
 			count++;
-			while (s[i]  && s[i] != c)
-            {
+			while (s[i] && s[i] != c)
+			{
 				i++;
-            }
+			}
 		}
 	}
 	return (count);
@@ -64,46 +51,46 @@ void	ft_freeeverything(char **a, size_t count)
 		free(a[i]);
 		i++;
 	}
+	free(a);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_onlysplit(char const *s, char c, char **a, size_t wordcount)
 {
-	char	**a;
 	size_t	i;
 	size_t	j;
-	size_t	wordend;
-	size_t	wordcount;
+	size_t	word_start;
 
-	if(c == 0)
-	{
-		a = (char **)malloc(1 * sizeof(char *));
-		a[0] = NULL;
-		return a;
-	}
-
-	wordcount = ft_countitems(s, c);
-
-	if(wordcount == 0)
-		return NULL;
-
-	a = (char **)malloc((wordcount + 1) * sizeof(char *));
-	if (a == NULL)
-		return (NULL);
 	i = 0;
 	j = 0;
-	while (s[i])
+	while (j < wordcount)
 	{
 		i = ft_separatorskip(s, i, c);
-		wordend = ft_tothesep(s, i, c);
-		a[j] = ft_substr(s, i, wordend - i + 1);
+		word_start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		a[j] = ft_substr(s, word_start, i - word_start);
 		if (a[j] == NULL)
 		{
 			ft_freeeverything(a, j);
 			return (NULL);
 		}
-		i = wordend + 1;
 		j++;
 	}
 	a[j] = NULL;
+	return (a);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**a;
+	size_t	wordcount;
+
+	if (!s)
+		return (NULL);
+	wordcount = ft_countitems(s, c);
+	a = (char **)malloc((ft_countitems(s, c) + 1) * sizeof(char *));
+	if (a == NULL)
+		return (NULL);
+	a = ft_onlysplit(s, c, a, wordcount);
 	return (a);
 }
