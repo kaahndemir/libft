@@ -47,7 +47,6 @@ size_t	ft_countitems(char const *s, char c)
 			count++;
 			while (s[i]  && s[i] != c)
             {
-		write(1, &s[i], 1);
 				i++;
             }
 		}
@@ -74,6 +73,13 @@ char	**ft_split(char const *s, char c)
 	size_t	j;
 	size_t	wordend;
 	size_t	wordcount;
+
+	if(c == 0)
+	{
+		a = (char **)malloc(1 * sizeof(char *));
+		a[0] = NULL;
+		return a;
+	}
 
 	wordcount = ft_countitems(s, c);
 
