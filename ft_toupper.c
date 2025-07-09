@@ -6,11 +6,9 @@
 /*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:31:32 by ogudemir          #+#    #+#             */
-/*   Updated: 2025/07/05 20:31:37 by ogudemir         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:15:09 by ogudemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 static int	ft_islower(int a)
 {

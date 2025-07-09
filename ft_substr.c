@@ -6,13 +6,13 @@
 /*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:03:21 by ogudemir          #+#    #+#             */
-/*   Updated: 2025/07/07 15:39:33 by ogudemir         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:06:37 by ogudemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_createsubstr(char const *s, size_t finallen, size_t start)
+static char	*ft_createsubstr(char const *s, size_t finallen, size_t start)
 {
 	char	*new;
 	size_t	i;

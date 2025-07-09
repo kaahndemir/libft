@@ -6,12 +6,11 @@
 /*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:31:37 by ogudemir          #+#    #+#             */
-/*   Updated: 2025/07/07 15:41:44 by ogudemir         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:07:03 by ogudemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 void	ft_bzero(void *s, size_t n)
 {

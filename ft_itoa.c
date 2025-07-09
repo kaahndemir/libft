@@ -6,7 +6,7 @@
 /*   By: ogudemir <ogudemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:44:12 by ogudemir          #+#    #+#             */
-/*   Updated: 2025/07/05 22:00:19 by ogudemir         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:12:13 by ogudemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_digits(int n)
 	return (digits);
 }
 
-char	*onlyitoa(char *a, int total, int n, int sign)
+static char	*onlyitoa(char *a, int total, int n, int sign)
 {
 	int	i;
 

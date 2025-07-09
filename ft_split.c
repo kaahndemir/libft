@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-size_t	ft_separatorskip(char const *s, size_t i, char c)
+static	size_t	ft_separatorskip(char const *s, size_t i, char c)
 {
 	while (s[i] && s[i] == c)
 		i++;
 	return (i);
 }
 
-size_t	ft_countitems(char const *s, char c)
+static	size_t	ft_countitems(char const *s, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -41,7 +41,7 @@ size_t	ft_countitems(char const *s, char c)
 	return (count);
 }
 
-void	ft_freeeverything(char **a, size_t count)
+static	void	ft_freeeverything(char **a, size_t count)
 {
 	size_t	i;
 
@@ -88,7 +88,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	wordcount = ft_countitems(s, c);
-	a = (char **)malloc((ft_countitems(s, c) + 1) * sizeof(char *));
+	a = (char **)malloc((wordcount + 1) * sizeof(char *));
 	if (a == NULL)
 		return (NULL);
 	a = ft_onlysplit(s, c, a, wordcount);
